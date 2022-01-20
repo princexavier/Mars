@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Add Customer</h2>
+      <table class="table">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <!-- <th>Place</th> -->
+        <!-- <th>Add</th>
+        <th>Delete</th> -->
+
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr >
+        <td><input [(ngModel)]="customer.fname" type="text" name="fname" id="fname"></td>
+        <td><input [(ngModel)]="customer.lname" type="text" name="lname" id="lname"></td>
+        <td><input [(ngModel)]="customer.email" type="text" name="email" id="email"></td>
+        <td><input [(ngModel)]="customer.phoneNumber" type="text" name="phoneNumber" id="phoneNumber"></td>
+        <!-- <td><input [(ngModel)]="customer.place" type="text" name="place" id="place"></td> -->
+        <!-- <td><button (click)="addCustomer()">Add</button></td>
+        <td><button (click)="deleteCustomer(i)">Delete</button></td> -->
+
+
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+
+<button class="btn btn-primary" (click)="save()"> Save</button>
+
+ <div class="container">
+    <h2>View Existing Customer</h2>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Phone Number</th>
+          <th>Place</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let customer of customers;let i=index;">
+          <td>{{i+1}}</td>
+
+          <td>{{customer.fname}}</td>
+          <td>{{customer.lname}}</td>
+          <td>{{customer.email}}</td>
+          <td>{{customer.phoneNumber}}</td>
+          <td>{{customer.place}}</td>
+
+        </tr>
+        
+      </tbody>
+    </table>
+  </div> 

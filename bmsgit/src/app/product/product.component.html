@@ -1,0 +1,38 @@
+<div class="container">
+    <h2>Add Product</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>productName</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input [(ngModel)]="product.productName" type="text" name="productName" id="productName"></td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<button class="btn btn-primary" (click)="save()"> Save</button>
+
+<div class="container">
+    <h2>View Existing Products</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>productName</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let product of products;let i=index;">
+                <td>{{product.productName}}</td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>

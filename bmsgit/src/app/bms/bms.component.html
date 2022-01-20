@@ -1,0 +1,97 @@
+<div class="container">
+    <h2>Add Customer</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>S.No</th>
+                <th>Customers</th>
+                <th>ProductName</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Customer Paid Amount</th>
+                <th>Total Amount</th>
+                <th>Balance Amount</th>
+                <th>Date Created</th>
+                <th>Add</th>
+                <th>Delete</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let bms of bmsList;let i =index;">
+                <td>{{i+1}}</td>
+                <td>
+                    <label for="area"></label>
+                    <select 
+                        style="width: 145px;padding: 6px;border: 1px solid #070727;border-radius: 4px"
+                         name="area" id="area">
+                        <option *ngFor="let customer of customers" value="{{customer.id}}">{{customer.fname}}</option>
+
+                    </select>
+                </td>
+                <td>
+                    <select 
+                        style="width: 145px;padding: 6px;border: 1px solid #070727;border-radius: 4px"
+                         name="area" id="area">
+                        <option *ngFor="let product of products" value="{{product.id}}">{{product.productName}}</option>
+
+                    </select>
+                </td>
+                <td><input [(ngModel)]="bms.quantity" (keyup)="cal(bms)" type="text" name="quantity" id="quantity"></td>
+                <td><input [(ngModel)]="bms.unitPrice" (keyup)="cal(bms)" type="text" name="unitPrice" id="unitPrice"></td>
+                <td><input [(ngModel)]="bms.customerAmt" (keyup)="calBal(bms)" type="text" name="customerAmt" id="customerAmt"></td>
+                <td><input [(ngModel)]="bms.totalAmt"  [disabled]="true" type="text" name="totalAmt" id="totalAmt"></td>
+                <td><input [(ngModel)]="bms.balanceAmt" [disabled]="true" type="text" name="balanceAmt" id="balanceAmt"></td>
+                <td>
+                    <!-- <input [(ngModel)]="bms.dateCreated"  name="dateCreated" id="dateCreated" [disabled]="true"> -->
+                    <span>{{bms.dateCreated | date :'dd/MM/yyyy'}}</span>
+                </td>
+                <td><button (click)="addBms()">Add</button></td>
+                <td><button (click)="deleteBms(1)">Delete</button></td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+<button class="btn btn-primary" (click)="save()"> Save</button>
+
+<!-- <div class="container">
+      <h2>View Existing Customer</h2>
+          <table class="table">
+        <thead>
+          <tr>
+            <th>S.No</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>ProductName</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>Customer Paid Amount</th>
+            <th>Total Amount</th>
+            <th>Balance Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let bms of bmsList;let i=index;">
+            <td>{{i+1}}</td>
+  
+            <td>{{bms.employee.fname}}</td>
+            <td>{{bms.employee.lname}}</td>
+            <td>{{bms.product.productName}}</td>
+            <td>{{bms.phoneNumber}}</td>
+            <td>{{bms.quantity}}</td>
+            <td>{{bms.unitPrice}}</td>
+            <td>{{bms.customerAmt}}</td>
+            <td>{{bms.totalAmt}}</td>
+            <td>{{bms.balanceAmt}}</td>
+
+  
+          </tr>
+          
+        </tbody>
+      </table>
+    </div>  -->

@@ -21,7 +21,6 @@ public class ProductServiceImpl implements ProductService{
 		try {
 			ObjectMapper om = new ObjectMapper();
 			prod= om.readValue(requestData, Product.class);
-			prod.setCustomerId(null);
 			System.out.println(prod);
 		}
 		catch(Exception e ) {

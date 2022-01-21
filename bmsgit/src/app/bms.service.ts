@@ -16,7 +16,12 @@ export class BmsService {
     return this.http.post(this.apiUrl + "/saveBmsList", bmsList);
   }
   getBmsList() {
-    return this.http.get(this.apiUrl + "/getDetails");
+    return this.http.get(this.apiUrl + "/getBmsList");
   }
+
+  getDropValues() {
+    return this.http.get(this.apiUrl + "/getDropValues");
+  }
+  
 
 }

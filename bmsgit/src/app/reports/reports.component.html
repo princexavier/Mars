@@ -1,0 +1,47 @@
+<form style="width: 30%;">
+    
+    <div class="form-group">
+      <label for="pwd">Date Filter:</label>
+      <input [(ngModel)]="filterObject.date" type="date" name="date" class="form-control" id="pwd">
+    </div>
+    <span>{{filterObject.date | json}}</span>
+    <button type="button" (click)="filter()" class="btn btn-default">Submit</button>
+  </form>
+
+  <div class="container">
+    <h2>View Existing Bills</h2>
+        <table class="table">
+      <thead>
+        <tr>
+          <th>S.No</th>
+          <th>Customer Name</th>
+          <th>ProductName</th>
+          <th>Quantity</th>
+          <th>Unit Price</th>
+          <th>Customer Paid Amount</th>
+          <th>Total Amount</th>
+          <th>Balance Amount</th>
+          <th>Date Created</th>
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bms of bmsList;let i=index;">
+          <td>{{i+1}}</td>
+
+          <td>{{bms.customerName}}</td>
+          <td>{{bms.productName}}</td>
+          <td>{{bms.quantity}}</td>
+          <td>{{bms.unitPrice}}</td>
+          <td>{{bms.customerAmt}}</td>
+          <td>{{bms.totalAmt}}</td>
+          <td>{{bms.balanceAmt}}</td>
+          <td>{{bms.dateCreated | date: 'dd/MM/yyyy'}}</td>
+
+
+
+        </tr>
+        
+      </tbody>
+    </table>
+  </div> 

@@ -1,5 +1,6 @@
 package com.bms.controllers;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bms.entities.Bms;
@@ -17,6 +19,7 @@ import com.bms.entities.Product;
 import com.bms.services.BmsService;
 import com.bms.services.CustomerService;
 import com.bms.services.ProductService;
+import com.bms.services.ReportService;
 
 @RestController("/")
 public class Rest {
@@ -29,6 +32,16 @@ public class Rest {
 
 	@Autowired
 	BmsService bmsService;
+	
+	@Autowired
+	ReportService reportsService;
+	
+	@PostMapping("/")
+	public String greet() {
+
+		return "Welcome";
+
+	}
 
 	@PostMapping("addCustomer")
 	public Customer addCustomer(@RequestBody String requestData) {
@@ -71,6 +84,13 @@ public class Rest {
 		return productService.getProduct(productId);
 
 	}
+	
+	@GetMapping("getBmsList")
+	public HashMap<String, Object> getBmsList() {
+
+		return bmsService.getBmsList();
+
+	}
 
 	@PostMapping("saveBmsList")
 	public List<Bms> addBmsList(@RequestBody String requestData) {
@@ -79,12 +99,6 @@ public class Rest {
 
 	}
 
-	@GetMapping("getBmsList")
-	public List<Bms> getBmsList() {
-
-		return bmsService.getBmsList();
-
-	}
 	
 	@GetMapping("getDetails")
 	public List<Bms> getDetails() {
@@ -93,11 +107,22 @@ public class Rest {
 
 	}
 
-	@RequestMapping("welcome")
-	public String welcome() {
-
-		return "WElomce";
+	@RequestMapping("getDropValues")
+	public HashMap<String, Object> welcome() {
+		
+		
+		return bmsService.getDropValues();
 
 	}
+	
+	@PostMapping("reports")
+	public HashMap<String, Object> welcome(@RequestBody String requestData) {
+		
+		
+		return reportsService.getReports( requestData);
+
+	}
+	
+	
 
 }

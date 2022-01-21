@@ -1,3 +1,4 @@
+import { ReportsComponent } from './reports/reports.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BmsComponent } from './bms/bms.component';
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path:'bms',
     component:BmsComponent
+  },
+  {
+    path:'report',
+    component:ReportsComponent
   },
   {
     path:'**',

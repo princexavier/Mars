@@ -15,10 +15,14 @@ export class Bms{
 
     public balanceAmt:number=0;
 
-    public customers:Customer[]=[];
+    public customerId:number=0;
     
-    public products:Product[]=[];
+    public productId:number=0;
     public dateCreated:Date= new Date();
+    public customerName:string="";
+    public productName:string="";
+
+    
 
 
 }

@@ -22,6 +22,8 @@ export class CustomerComponent implements OnInit {
   save(){
     this.cutomerService.saveCustomer(this.customer).subscribe(data=>{
       console.log(data)
+      if(data)
+       this.ngOnInit()
     },error=>{
 
     });

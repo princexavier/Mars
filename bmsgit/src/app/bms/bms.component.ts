@@ -10,7 +10,8 @@ import { Bms } from '../model/Bms';
 export class BmsComponent implements OnInit {
 
   bms:Bms=new Bms();
-  bmsList:Bms[]=[this.bms];
+  bmsList:Bms[]=[];
+  bmsCustomList:Bms[]=[this.bms];
   customers:any=[];
   products:any=[];
 
@@ -19,31 +20,39 @@ export class BmsComponent implements OnInit {
   constructor(private bmsService:BmsService) { }
 
   ngOnInit(): void {
+
+    
+    this.bmsService.getDropValues().subscribe((data:any)=>{
+      if(data){
+      this.customers = data['customers'];
+      this.products=data['products'];  
+      }
+    });
+
     console.log(this.bmsList)
     this.bmsService.getBmsList().subscribe((data:any)=>{
       console.log(data);
-      if(data['length']>0){
-        this.bmsList=data;
-        this.bmsList[0]['dateCreated']=new Date();
-       this.customers=data[0]['customers'];
-       this.products=data[0]['products'];
-
+      if(data){
+        this.bmsList=data['bms'];
+        
       }
     
        
     },err=>{})
   }
   save(){
-    this.bmsService.saveBmsList(this.bmsList).subscribe(data=>{
+    this.bmsService.saveBmsList(this.bmsCustomList).subscribe(data=>{
       console.log(data);
+      if(data)
+       this.ngOnInit()
     },error=>{})
   }
   addBms(){
-    this.bmsList.push(new Bms());
+    this.bmsCustomList.push(new Bms());
   }
   deleteBms(index:number){
-    if(this.bmsList.length!=1)
-      this.bmsList.splice(index,1);
+    if(this.bmsCustomList.length!=1)
+      this.bmsCustomList.splice(index,1);
     else 
      alert('Cannot delete')  
   }

@@ -1,16 +1,13 @@
 package com.bms.entities;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -46,7 +43,16 @@ private BigDecimal balanceAmt;
 @JsonProperty("dateCreated")
 private Date dateCreated;
 
+@Column(name = "customer_id")
+@JsonProperty("customerId")
+private Long customerId;
 
+@Column(name = "product_id")
+@JsonProperty("productId")
+private Long productId;
+
+private String customerName;
+private String productName;
 
 public Long getId() {
 	return id;
@@ -91,6 +97,30 @@ public void setDateCreated(Date dateCreated) {
 	this.dateCreated = dateCreated;
 }
 
+public Long getCustomerId() {
+	return customerId;
+}
+public void setCustomerId(Long customerId) {
+	this.customerId = customerId;
+}
+public Long getProductId() {
+	return productId;
+}
+public void setProductId(Long productId) {
+	this.productId = productId;
+}
+public String getCustomerName() {
+	return customerName;
+}
+public void setCustomerName(String customerName) {
+	this.customerName = customerName;
+}
+public String getProductName() {
+	return productName;
+}
+public void setProductName(String productName) {
+	this.productName = productName;
+}
 @Override
 public String toString() {
 	return "Bms [id=" + id + ", quantity=" + quantity + ", unitPrice=" + unitPrice + ", customerAmt=" + customerAmt

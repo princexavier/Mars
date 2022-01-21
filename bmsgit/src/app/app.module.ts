@@ -1,3 +1,4 @@
+import { BackEndDetail } from './model/BackEndDetail';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -9,6 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BmsComponent } from './bms/bms.component';
+import { ReportsComponent } from './reports/reports.component';
 
 
 @NgModule({
@@ -17,17 +19,19 @@ import { BmsComponent } from './bms/bms.component';
     CustomerComponent,
     ProductComponent,
     HomeComponent,
-    BmsComponent
+    BmsComponent,
+    ReportsComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    
     
     
   ],
-  providers: [],
+  providers: [BackEndDetail],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

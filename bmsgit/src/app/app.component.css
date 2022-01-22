@@ -1,0 +1,21 @@
+.navbar-inverse .navbar-nav > li > a {
+    color: white;
+}
+
+.companyName:hover{
+    background-color: transparent;
+}
+
+.navbar-inverse {
+    border: 0;border-radius: 0;
+    background-color: #4b1c6e !important;
+    border-color: #080808;
+    background-image: none;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus{
+    color: #ff0909;
+}
+button{
+    border: none !important;
+    outline: none;
+}

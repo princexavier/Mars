@@ -1,9 +1,9 @@
-<div class="container">
+<div class="container" style="width: 100%;">
     <h2>Add Product</h2>
-    <table class="table">
+    <!-- <table class="table">
         <thead>
             <tr>
-                <th>productName</th>
+                <th>Product Name</th>
             </tr>
         </thead>
         <tbody>
@@ -12,22 +12,33 @@
             </tr>
 
         </tbody>
-    </table>
+    </table> -->
+
+    <form style="width: 20%;">
+
+        <div class="form-group">
+            <label for="pname">Product Name:</label>
+            <input type="text" [(ngModel)]="product.productName" class="form-control" name="productName" id="pname">
+        </div>
+
+        <button type="button" (click)="save()" class="btn btn-success">Save Product</button>
+    </form>
 </div>
 
-<button class="btn btn-primary" (click)="save()"> Save</button>
 
-<div class="container">
+<div class="container" style="width: 100%;">
     <h2>View Existing Products</h2>
     <table class="table">
         <thead>
             <tr>
+                <th>S.No</th>
                 <th>productName</th>
 
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let product of products;let i=index;">
+                <td>{{i+1}}</td>
                 <td>{{product.productName}}</td>
 
 

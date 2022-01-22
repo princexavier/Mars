@@ -14,6 +14,7 @@ export class BmsComponent implements OnInit {
   bmsCustomList:Bms[]=[this.bms];
   customers:any=[];
   products:any=[];
+  disableFlag:boolean=true;
 
 
 
@@ -49,12 +50,16 @@ export class BmsComponent implements OnInit {
   }
   addBms(){
     this.bmsCustomList.push(new Bms());
+    this.disableFlag=false;
   }
   deleteBms(index:number){
     if(this.bmsCustomList.length!=1)
       this.bmsCustomList.splice(index,1);
-    else 
-     alert('Cannot delete')  
+
+     if(this.bmsCustomList.length==1){
+     this.disableFlag=true; 
+
+     }
   }
 
   cal(bms:any){

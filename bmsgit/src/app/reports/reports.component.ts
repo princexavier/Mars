@@ -15,6 +15,14 @@ export class ReportsComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  export(type:string){
+    if(type=='pdf'){
+
+    }
+    else if(type=='excel'){
+      
+    }
+  }
   filter(){
     if(this.filterObject.date)
       {

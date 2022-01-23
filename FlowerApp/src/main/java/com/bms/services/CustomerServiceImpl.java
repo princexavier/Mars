@@ -1,5 +1,6 @@
 package com.bms.services;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,7 +43,19 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public List<Customer> getAllCustomers() {
 		// TODO Auto-generated method stub
+
+
 		return customerRepo.findAll();
+	}
+
+	@Override
+	public HashMap<String,Object> deleteCustomer(String customerId) {
+		// TODO Auto-generated method stub
+		HashMap<String,Object> responseMp = new HashMap<String, Object>();
+		Integer custId = Integer.parseInt(customerId);
+		customerRepo.deleteById(custId);
+		responseMp.put("data", true);
+		return responseMp;
 	}
 
 }

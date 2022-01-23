@@ -41,5 +41,16 @@ export class ProductComponent implements OnInit {
     else 
     alert('Cant delete')
   }
+  editProduct(product:any){
+    this.product.id = product.id;
+    this.product.productName=product.productName;
+  }
 
+  
+  deleteProductD(prodcutId:any){
+    this.productService.deleteProductD(prodcutId).subscribe((data:any)=>{
+      if(data)
+       this.ngOnInit()
+    });
+  }
 }

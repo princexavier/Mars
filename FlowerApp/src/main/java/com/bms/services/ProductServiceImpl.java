@@ -1,5 +1,6 @@
 package com.bms.services;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,6 +43,17 @@ public class ProductServiceImpl implements ProductService{
 	public List<Product> getAllProducts() {
 		// TODO Auto-generated method stub
 		return productRepo.findAll();
+	}
+
+	@Override
+	public HashMap<String, Object> deleteProduct(String productId) {
+		 HashMap<String, Object> responseMap = new HashMap<String, Object>();
+		 
+		Integer pId = Integer.valueOf(productId);
+		
+		 productRepo.deleteById(pId);
+		 responseMap.put("data",true);
+		return responseMap;
 	}
 
 }

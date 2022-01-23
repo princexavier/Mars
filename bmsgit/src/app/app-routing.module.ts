@@ -1,3 +1,4 @@
+import { PlacesComponent } from './places/places.component';
 import { ReportsComponent } from './reports/reports.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -26,6 +27,10 @@ const routes: Routes = [
   {
     path:'report',
     component:ReportsComponent
+  },
+  {
+    path:'place',
+    component:PlacesComponent
   },
   {
     path:'**',

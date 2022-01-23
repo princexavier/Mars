@@ -37,9 +37,9 @@
 
                     </select>
                 </td>
-                <td><input [(ngModel)]="bmsCust.quantity" (keyup)="cal(bms)" type="text" name="quantity" id="quantity"></td>
-                <td><input [(ngModel)]="bmsCust.unitPrice" (keyup)="cal(bms)" type="text" name="unitPrice" id="unitPrice"></td>
-                <td><input [(ngModel)]="bmsCust.customerAmt" (keyup)="calBal(bms)" type="text" name="customerAmt" id="customerAmt"></td>
+                <td><input [(ngModel)]="bmsCust.quantity" (keyup)="cal(bmsCust)" type="text" name="quantity" id="quantity"></td>
+                <td><input [(ngModel)]="bmsCust.unitPrice" (keyup)="cal(bmsCust)" type="text" name="unitPrice" id="unitPrice"></td>
+                <td><input [(ngModel)]="bmsCust.customerAmt" (keyup)="calBal(bmsCust)" type="text" name="customerAmt" id="customerAmt"></td>
                 <td><input [(ngModel)]="bmsCust.totalAmt"  [disabled]="true" type="text" name="totalAmt" id="totalAmt"></td>
                 <td><input [(ngModel)]="bmsCust.balanceAmt" [disabled]="true" type="text" name="balanceAmt" id="balanceAmt"></td>
                 <td style="vertical-align: middle;">

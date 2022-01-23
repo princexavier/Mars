@@ -1,27 +1,15 @@
 <div class="container" style="width: 100%;">
     <h2>Add Product</h2>
-    <!-- <table class="table">
-        <thead>
-            <tr>
-                <th>Product Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><input [(ngModel)]="product.productName" type="text" name="productName" id="productName"></td>
-            </tr>
 
-        </tbody>
-    </table> -->
 
-    <form style="width: 20%;">
+    <form style="width: 20%;" #pForm="ngForm">
 
         <div class="form-group">
             <label for="pname">Product Name:</label>
-            <input type="text" [(ngModel)]="product.productName" class="form-control" name="productName" id="pname">
+            <input required type="text" [(ngModel)]="product.productName" class="form-control" name="productName" id="pname">
         </div>
 
-        <button type="button" (click)="save()" class="btn btn-success">Save Product</button>
+        <button [disabled]="!pForm.valid" type="button" (click)="save()" class="btn btn-success">Save Product</button>
     </form>
 </div>
 
@@ -33,6 +21,7 @@
             <tr>
                 <th>S.No</th>
                 <th>productName</th>
+                <th></th>
 
             </tr>
         </thead>
@@ -40,7 +29,8 @@
             <tr *ngFor="let product of products;let i=index;">
                 <td>{{i+1}}</td>
                 <td>{{product.productName}}</td>
-
+                <td><button (click)="editProduct(product)">Edit</button><button (click)="deleteProductD(product.id)">Delete
+                </button></td>
 
             </tr>
 

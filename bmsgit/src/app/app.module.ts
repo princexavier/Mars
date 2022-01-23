@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BmsComponent } from './bms/bms.component';
 import { ReportsComponent } from './reports/reports.component';
+import { PlacesComponent } from './places/places.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReportsComponent } from './reports/reports.component';
     ProductComponent,
     HomeComponent,
     BmsComponent,
-    ReportsComponent
+    ReportsComponent,
+    PlacesComponent
   ],
   imports: [
     FormsModule,

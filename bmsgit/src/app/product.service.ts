@@ -7,6 +7,9 @@ import { Product } from '../app/model/Product';
   providedIn: 'root'
 })
 export class ProductService {
+  deleteProductD(productId: any) {
+    return this.http.post(this.apiUrl+"/deleteProduct",productId);
+  }
   apiUrl:string="http://localhost:8084";
   constructor(private http :HttpClient) { }
   getAllProducts(){

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bms.entities.Bms;
@@ -18,6 +17,7 @@ import com.bms.entities.Customer;
 import com.bms.entities.Product;
 import com.bms.services.BmsService;
 import com.bms.services.CustomerService;
+import com.bms.services.PlacesService;
 import com.bms.services.ProductService;
 import com.bms.services.ReportService;
 
@@ -35,6 +35,9 @@ public class Rest {
 	
 	@Autowired
 	ReportService reportsService;
+
+	@Autowired
+	PlacesService placeService;
 	
 	@PostMapping("/")
 	public String greet() {
@@ -56,6 +59,13 @@ public class Rest {
 		return custService.getCustomer(customerId);
 
 	}
+	
+	@PostMapping("deleteCustomer")
+	public HashMap<String,Object> deleteCustomer(@RequestBody String requestData) {
+
+		 return custService.deleteCustomer(requestData);
+
+	}
 
 	@GetMapping("getAllCustomers")
 	public List<Customer> getAllCustomers() {
@@ -63,6 +73,15 @@ public class Rest {
 		return custService.getAllCustomers();
 
 	}
+	
+	@PostMapping("deleteProduct")
+	public HashMap<String, Object> deleteProduct(@RequestBody String productId) {
+
+		return productService.deleteProduct(productId);
+
+	}
+	
+	
 
 	@GetMapping("getAllProducts")
 	public List<Product> getAllProducts() {
@@ -122,6 +141,25 @@ public class Rest {
 		return reportsService.getReports( requestData);
 
 	}
+
+	@PostMapping("savePlace")
+	public HashMap<String, Object> savePlace(@RequestBody String requestData) {
+
+
+		return placeService.savePlace( requestData);
+
+	}
+	@GetMapping("getAllPlaces")
+	public HashMap<String, Object> getAllPlaces() {
+
+
+		return placeService.getAllPlaces( );
+
+	}
+
+
+
+
 	
 	
 

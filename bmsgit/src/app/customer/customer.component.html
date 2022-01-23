@@ -1,63 +1,53 @@
 <div class="container" style="width: 100%;">
   <h2>Add Customer</h2>
-  <!-- <table class="table"> -->
-    <!-- <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Lastname</th>
-        <th>Email</th>
-        <th>Phone Number</th>
 
-
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><input [(ngModel)]="customer.fname" type="text" name="fname" id="fname"></td>
-        <td><input [(ngModel)]="customer.lname" type="text" name="lname" id="lname"></td>
-        <td><input [(ngModel)]="customer.email" type="text" name="email" id="email"></td>
-        <td><input [(ngModel)]="customer.phoneNumber" type="text" name="phoneNumber" id="phoneNumber"></td>
-
-
-
-      </tr>
-
-    </tbody>
-  </table> -->
-
-  
-
-  <form  >
+  <form #custForm="ngForm">
 
     <div class="form-group formprince">
       <label for="fname">First Name:</label>
-      <input type="text" [(ngModel)]="customer.fname" class="form-control" name="fname" id="pname">
+
+      <input required minlength="3" maxlength="25" type="text" ngModel #fname="ngModel" (change)="validate(fname)"
+        [(ngModel)]="customer.fname" class="form-control" name="fname" id="pname">
     </div>
     <div class="form-group formprince">
       <label for="lname">Last Name:</label>
-      <input type="text" [(ngModel)]="customer.lname" class="form-control" name="lname" id="pname">
+      <input required minlength="3" maxlength="25" type="text" [(ngModel)]="customer.lname" class="form-control"
+        name="lname" id="pname">
     </div>
     <div class="form-group formprince">
       <label for="email">Email:</label>
-      <input type="text" [(ngModel)]="customer.email" class="form-control" name="email" id="pname">
+      <input required minlength="3" type="text" [(ngModel)]="customer.email" class="form-control" name="email"
+        id="pname">
     </div>
     <div class="form-group formprince">
       <label for="phoneNumber">Phone Number:</label>
-      <input type="text" [(ngModel)]="customer.phoneNumber" class="form-control" name="phoneNumber" id="pname">
+      <input required minlength="10" type="number" [(ngModel)]="customer.phoneNumber" class="form-control"
+        name="phoneNumber" id="pname">
     </div>
+
+
+    <div class="form-group formprince">
+      <label for="customerPlace">Customer Place:</label>
+      <select required #place="ngModel" class="form-control"
+        style="width: 145px;padding: 6px;border: 1px solid #070727;border-radius: 4px" name="area" id="area"
+        [(ngModel)]="customer.placeId">
+        <option *ngFor="let place of places" value="{{place.placeId}}">{{place.placeName}}</option>
+      </select>
+    </div>
+
+
 
   </form>
 
 </div>
 <div style="width: 100%;
 text-align: center;">
-  <button type="button" (click)="save()" class="btn btn-success">Save Customer</button>
+  <button [disabled]="!custForm.valid" type="button" (click)="save(custForm)" class="btn btn-success">Save
+    Customer</button>
 
 </div>
 
 
-<!-- <button class="btn btn-primary" (click)="save()"> Save</button> -->
 
 <div class="container" style="width: 100%;">
   <h2>View Existing Customer</h2>
@@ -69,6 +59,7 @@ text-align: center;">
         <th>Lastname</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -79,6 +70,9 @@ text-align: center;">
         <td>{{customer.lname}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.phoneNumber}}</td>
+        <td><button (click)="editCustomer(customer)">Edit</button><button (click)="deleteCustomerD(customer.id)">Delete
+          </button></td>
+
 
       </tr>
 

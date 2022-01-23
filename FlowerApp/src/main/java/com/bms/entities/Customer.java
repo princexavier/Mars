@@ -1,10 +1,17 @@
 package com.bms.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity(name = "customers")
 public class Customer {
@@ -25,8 +32,16 @@ public class Customer {
 
 	@Column(name = "email")
 	private String email;
+	
+	@Column(name = "place_id")
+	@JsonProperty("placeId")
+	private Long placeId;
 
 	private Address address = new Address();
+	
+	@Transient
+	@JsonProperty("places")
+	private List<Place>places = new ArrayList<>();
 
 
 	public int getId() {
@@ -78,6 +93,22 @@ public class Customer {
 	}
 
 	
+	public List<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(List<Place> places) {
+		this.places = places;
+	}
+
+	public Long getPlaceId() {
+		return placeId;
+	}
+
+	public void setPlaceId(Long placeId) {
+		this.placeId = placeId;
+	}
+
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", fname=" + fname + ", lname=" + lname + ",  phoneNumber=" + phoneNumber

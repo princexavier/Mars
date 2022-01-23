@@ -6,6 +6,7 @@ import { Customer } from './model/Customer';
   providedIn: 'root'
 })
 export class CustomerService {
+ 
   apiUrl:string="http://localhost:8084";
   constructor(private http : HttpClient) { }
 
@@ -14,5 +15,10 @@ export class CustomerService {
   }
   saveCustomer(requstData:Customer){
     return this.http.post(this.apiUrl+"/addCustomer",requstData)
+  }
+
+  deleteCustomer(customerId: any) {
+    return this.http.post(this.apiUrl+"/deleteCustomer",customerId)
+
   }
 }

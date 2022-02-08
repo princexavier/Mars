@@ -59,6 +59,8 @@ text-align: center;">
         <th>Lastname</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th>Place</th>
+
         <th></th>
       </tr>
     </thead>
@@ -70,6 +72,15 @@ text-align: center;">
         <td>{{customer.lname}}</td>
         <td>{{customer.email}}</td>
         <td>{{customer.phoneNumber}}</td>
+        <ng-container *ngFor="let place of places ;let i = index">
+          <ng-container *ngIf="customer.placeId == place.placeId ">
+            <td>{{place.placeName}}</td>
+
+          </ng-container>
+          
+
+        </ng-container>
+
         <td><button (click)="editCustomer(customer)">Edit</button><button (click)="deleteCustomerD(customer.id)">Delete
           </button></td>
 
